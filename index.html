@@ -24,13 +24,14 @@
     app.ports.moveMap.subscribe(
         town => map.setView([town.latitude, town.longitude], town.defaultZoom)
     )
-           
+
     app.ports.addPlaces.subscribe(
-        places => 
+        places =>
             places.map( place =>
-                L.marker([place.latitude, place.longitude], 
+                L.marker([place.latitude, place.longitude],
                     { icon: L.icon(
-                        { iconUrl: getMarkerImage({wifi: place.wifi, power: place.power}) }
+                      { iconUrl: getMarkerImage({wifi: place.wifi, power: place.power}),
+                      iconAnchor: [12, 41]}
                     )}
                 )
                 .addTo(map)
